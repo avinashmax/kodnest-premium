@@ -218,9 +218,14 @@ function createJobCard(job, isSavedView = false) {
                 </select>
             </div>
 
-            <div class="card-footer"><button class="btn-icon ${isSaved ? 'saved' : ''}" onclick="toggleSave(${job.id})">${isSaved ? '♥' : '♡'}</button><div class="card-actions"><button class="btn btn-secondary" onclick="openModal(${job.id})">View</button><a href="${job.applyUrl}" target="_blank" class="btn btn-primary">Apply</a></div></div>
+            <div class="card-footer"><button class="btn-icon ${isSaved ? 'saved' : ''}" onclick="toggleSave(${job.id})">${isSaved ? '♥' : '♡'}</button><div class="card-actions"><button class="btn btn-secondary" onclick="openModal(${job.id})">View</button><button class="btn btn-primary" onclick="handleApply(${job.id}, '${job.applyUrl}', '${job.title}', '${job.company}')">Apply</button></div></div>
         </div>
     `;
+}
+
+function handleApply(id, url, title, company) {
+    updateJobStatus(id, 'Applied', title, company);
+    window.open(url, '_blank');
 }
 
 function updateJobStatus(id, newStatus, title, company) {
