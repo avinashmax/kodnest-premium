@@ -1,0 +1,123 @@
+/* Final Proof & Submission Styles */
+
+.proof-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.milestone-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+}
+
+.milestone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3);
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+.milestone-status {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.status-completed {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-pending {
+    background: #f5f5f5;
+    color: #999;
+}
+
+.artifact-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.link-input {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+    background: var(--color-bg);
+}
+
+.link-input:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    background: white;
+}
+
+.validation-msg {
+    font-size: 12px;
+    height: 14px;
+}
+
+.msg-error {
+    color: #D32F2F;
+}
+
+.msg-success {
+    color: #388E3C;
+}
+
+.ship-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.badge-not-started {
+    background: #F5F5F5;
+    color: #777;
+}
+
+.badge-in-progress {
+    background: #E3F2FD;
+    color: #1976D2;
+}
+
+.badge-shipped {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.submission-box {
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #444;
+}
