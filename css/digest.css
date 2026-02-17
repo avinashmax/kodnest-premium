@@ -1,0 +1,107 @@
+/* Daily Digest Specific Styles */
+
+.digest-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fdfdfd;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-family: var(--font-sans);
+}
+
+.digest-header {
+    text-align: center;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.digest-title {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.digest-date {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.digest-intro {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-5);
+    font-style: italic;
+}
+
+.digest-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.digest-item {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: var(--space-4);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.digest-item-content {
+    flex: 1;
+}
+
+.digest-item-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+
+.digest-item-meta {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.digest-item-score {
+    font-weight: 700;
+    color: var(--color-success);
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+.digest-actions {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.digest-footer {
+    text-align: center;
+    margin-top: var(--space-6);
+    font-size: 12px;
+    color: #999;
+}
+
+/* Empty State / Generator */
+.digest-generator {
+    text-align: center;
+    padding: var(--space-6);
+    background: white;
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+}
