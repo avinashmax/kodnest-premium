@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodNest Premium Build System</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        /* Layout Specific Styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            height: 60px;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-4);
+            background: var(--color-white);
+            flex-shrink: 0;
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .progress-indicator {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .primary-workspace {
+            flex: 7; /* 70% */
+            background-color: var(--color-bg);
+            padding: var(--space-5);
+            overflow-y: auto;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .secondary-panel {
+            flex: 3; /* 30% */
+            background-color: var(--color-white);
+            padding: var(--space-4);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        /* Context Header */
+        .context-header {
+            margin-bottom: var(--space-5);
+        }
+
+        .context-header h1 {
+            font-size: 32px;
+            margin-bottom: var(--space-1);
+        }
+
+        .context-header p {
+            color: var(--color-text-secondary);
+            font-size: 18px;
+        }
+
+        /* Proof Footer */
+        .proof-footer {
+            height: 80px;
+            background: var(--color-white);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-5);
+            gap: var(--space-5);
+            flex-shrink: 0;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: color var(--transition-normal);
+        }
+
+        .proof-item:hover {
+            color: var(--color-text-primary);
+        }
+
+        .proof-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--color-border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+
+        .proof-item.checked .proof-checkbox {
+            background-color: var(--color-success);
+            border-color: var(--color-success);
+        }
+
+        .proof-item.checked .proof-checkbox::after {
+            content: '✔';
+            color: white;
+            font-size: 12px;
+        }
+
+        .proof-item.checked {
+            color: var(--color-text-primary);
+        }
+
+        /* Secondary Panel Elements */
+        .prompt-box {
+            background: var(--color-bg);
+            padding: var(--space-2);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+            margin-bottom: var(--space-2);
+            word-wrap: break-word; /* Ensure long prompts wrap */
+        }
+
+        .panel-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="project-name">KodNest Premium</div>
+        <div class="progress-indicator">Step 3 / 5</div>
+        <div class="status-badge in-progress">In Progress</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Primary Workspace (70%) -->
+        <section class="primary-workspace">
+            <div class="context-header">
+                <h1>Define Your Data Model</h1>
+                <p>Structure your application's core entities efficiently.</p>
+            </div>
+
+            <!-- Example Workspace Content -->
+            <div class="card">
+                <h3 style="margin-bottom: var(--space-3); font-size: 20px;">User Entity</h3>
+                
+                <div class="input-group">
+                    <label class="input-label">Entity Name</label>
+                    <input type="text" class="input-field" value="User" placeholder="e.g. Product">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Attributes (comma separated)</label>
+                    <input type="text" class="input-field" value="id, name, email, role, created_at" placeholder="e.g. title, price, description">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-4);">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary">Save Entity</button>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: var(--space-3); opacity: 0.6;">
+                <h3 style="margin-bottom: var(--space-3); font-size: 20px;">+ Add New Entity</h3>
+            </div>
+        </section>
+
+        <!-- Secondary Panel (30%) -->
+        <aside class="secondary-panel">
+            <div>
+                <h4 style="margin-bottom: var(--space-1);">Current Task</h4>
+                <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: var(--space-3);">
+                    We need to define the core data structure before moving to API generation. Review the prompt below.
+                </p>
+            </div>
+
+            <div class="prompt-box">
+                Create a user schema with fields: id (uuid), name (string), email (string, unique), and role (enum: admin, user).
+            </div>
+
+            <div class="panel-actions">
+                <button class="btn btn-secondary w-full" onclick="copyPrompt()">Copy Prompt</button>
+                <button class="btn btn-primary w-full">Build in Lovable</button>
+                <div style="display: flex; gap: var(--space-2);">
+                    <button class="btn btn-secondary" style="flex: 1; border-color: var(--color-success); color: var(--color-success);">It Worked</button>
+                    <button class="btn btn-secondary" style="flex: 1; border-color: var(--color-accent); color: var(--color-accent);">Error</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Proof Footer -->
+    <footer class="proof-footer">
+        <div class="proof-item" onclick="toggleProof(this)">
+            <div class="proof-checkbox"></div>
+            <span>UI Built</span>
+        </div>
+        <div class="proof-item" onclick="toggleProof(this)">
+            <div class="proof-checkbox"></div>
+            <span>Logic Working</span>
+        </div>
+        <div class="proof-item" onclick="toggleProof(this)">
+            <div class="proof-checkbox"></div>
+            <span>Test Passed</span>
+        </div>
+        <div class="proof-item" onclick="toggleProof(this)">
+            <div class="proof-checkbox"></div>
+            <span>Deployed</span>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
