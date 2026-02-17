@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/jobs.css">
     <style>
         /* Layout Specific Styles for Job Tracker */
         body {
@@ -213,6 +214,14 @@
     <main class="app-container" id="app">
         <!-- Content injected via Router -->
     </main>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="jobModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
