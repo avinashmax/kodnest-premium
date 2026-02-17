@@ -1,0 +1,102 @@
+/* Skeleton / Landing Page Styles */
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.hero-headline {
+    font-size: 48px;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.2;
+}
+
+.hero-subtext {
+    font-size: 20px;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-5);
+    line-height: 1.5;
+}
+
+/* Settings Form */
+.settings-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: var(--space-4);
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background: var(--color-white);
+    transition: border-color var(--transition-normal);
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-hint {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-3);
+    opacity: 0.5;
+}
+
+.empty-state-text {
+    font-size: 18px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* Navigation Overrides for Landing Page */
+body.is-landing .top-nav {
+    border-bottom: none;
+    background: transparent;
+}

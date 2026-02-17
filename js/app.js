@@ -1,9 +1,10 @@
 /**
- * Simple Hash-based Router for Job Notification Tracker
+ * Job Notification Tracker - App Logic
+ * Premium Skeleton Version
  */
 
 const routes = {
-    '/': 'Dashboard',
+    '/': 'Landing',
     '/dashboard': 'Dashboard',
     '/saved': 'Saved Jobs',
     '/digest': 'Daily Digest',
@@ -16,103 +17,129 @@ const menuOverlay = document.getElementById('mobileMenu');
 
 /**
  * Renders the view content based on the current path.
- * @param {string} title - The title of the page to render.
  */
-function renderView(title) {
+function renderView(path) {
     let html = '';
 
-    if (title === 'Dashboard') {
-        html = renderDashboard();
-    } else {
-        // Placeholder for other views
-        html = `
-            <div class="placeholder-content">
-                <h1 class="placeholder-title">${title}</h1>
-                <p class="placeholder-subtitle">This section will be built in the next step.</p>
-            </div>
-        `;
+    // Normalize path
+    if (path === '' || path === '/') {
+        renderLanding();
+        return;
+    }
+
+    // Remove landing class if present
+    document.body.classList.remove('is-landing');
+
+    switch (path) {
+        case '/dashboard':
+            html = renderDashboardEmpty();
+            break;
+        case '/settings':
+            html = renderSettings();
+            break;
+        case '/saved':
+            html = renderEmptyState("Saved Jobs", "Your shortlisted opportunities will appear here.");
+            break;
+        case '/digest':
+            html = renderEmptyState("Daily Digest", "Your 9AM daily summary will appear here.");
+            break;
+        case '/proof':
+            html = renderEmptyState("Proof of Work", "Artifact collection placeholder.");
+            break;
+        default:
+            html = render404();
     }
 
     appContainer.innerHTML = html;
 }
 
-function renderDashboard() {
-    // Generate Stats HTML
-    const statsHtml = `
-        <div class="stats-row">
-            <div class="stat-card">
-                <span class="stat-label">Total Jobs Found</span>
-                <span class="stat-value">${stats.total}</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">New Alerts</span>
-                <span class="stat-value" style="color: var(--color-accent);">${stats.new}</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">Applications Sent</span>
-                <span class="stat-value">${stats.applied}</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">Saved for Later</span>
-                <span class="stat-value">${stats.saved}</span>
-            </div>
+function renderLanding() {
+    document.body.classList.add('is-landing');
+    appContainer.innerHTML = `
+        <div class="hero-section">
+            <h1 class="hero-headline">Stop Missing The Right Jobs.</h1>
+            <p class="hero-subtext">Precision-matched job discovery delivered daily at 9AM.</p>
+            <a href="#/settings" class="btn btn-primary" style="font-size: 18px; padding: 16px 32px;">Start Tracking</a>
         </div>
     `;
+}
 
-    // Generate Job List HTML
-    const jobsHtml = jobAlerts.map(job => `
-        <div class="job-card">
-            <div class="job-header">
-                <div>
-                    <div class="job-title">${job.title}</div>
-                    <div class="job-company">${job.company} • ${job.location}</div>
-                </div>
-                <span class="job-status status-${job.status.toLowerCase()}">${job.status}</span>
-            </div>
-            
-            <div class="job-details">
-                <span class="job-detail-item">📅 ${job.posted}</span>
-                <span class="job-detail-item">💰 ${job.salary}</span>
-                <span class="job-detail-item">💼 ${job.type}</span>
-            </div>
-
-            <div class="job-actions">
-                <button class="action-btn">Ignore</button>
-                <button class="action-btn primary" onclick="alert('Applying to ${job.company}...')">Quick Apply</button>
-            </div>
-        </div>
-    `).join('');
-
+function renderSettings() {
     return `
-        <div class="dashboard-container">
-            <h2 class="section-title">Overview</h2>
-            ${statsHtml}
+        <div class="settings-container">
+            <h2 class="section-title">Preferences</h2>
             
-            <h2 class="section-title">Latest Alerts</h2>
-            <div class="job-list">
-                ${jobsHtml}
+            <div class="form-group">
+                <label class="form-label">Role Keywords</label>
+                <input type="text" class="form-input" placeholder="e.g. Frontend Engineer, Product Designer">
+                <p class="form-hint">Separate multiple keywords with commas.</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Preferred Locations</label>
+                <input type="text" class="form-input" placeholder="e.g. San Francisco, Remote, London">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Work Mode</label>
+                <select class="form-select">
+                    <option>Remote</option>
+                    <option>Hybrid</option>
+                    <option>On-site</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Experience Level</label>
+                <select class="form-select">
+                    <option>Mid-Level (2-5 years)</option>
+                    <option>Senior (5-8 years)</option>
+                    <option>Staff/Principal (8+ years)</option>
+                </select>
+            </div>
+
+            <div style="text-align: right; margin-top: var(--space-4);">
+                <button class="btn btn-primary">Save Preferences</button>
             </div>
         </div>
     `;
 }
 
+function renderDashboardEmpty() {
+    return `
+        <div class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <p class="empty-state-text">No jobs yet. In the next step, you will load a realistic dataset.</p>
+        </div>
+    `;
+}
+
+function renderEmptyState(title, message) {
+    return `
+        <div class="empty-state">
+            <h2 class="section-title" style="margin-bottom: var(--space-2);">${title}</h2>
+            <p class="empty-state-text">${message}</p>
+        </div>
+    `;
+}
+
+function render404() {
+    return `<div class="hero-section"><h1>404</h1><p>Page not found.</p></div>`;
+}
+
 /**
  * Handles navigation updates (Active link highlighting).
- * @param {string} path - The current route path (e.g., '/dashboard').
  */
 function updateNavigation(path) {
-    // Normalize root path
-    if (path === '' || path === '/') path = '/dashboard';
-
-    // Desktop Links
+    // Top Nav visibility logic could go here if needed
+    // Highlight active link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('data-path') === path) {
+        const linkPath = link.getAttribute('data-path');
+        if (linkPath === path) {
             link.classList.add('active');
         }
     });
-
-    // Mobile Links (if we want to highlight them too, optional)
 }
 
 /**
@@ -122,14 +149,8 @@ function router() {
     // Get the current hash (remove the #)
     let path = window.location.hash.slice(1) || '/';
 
-    // Default to dashboard if root
-    if (path === '/') path = '/dashboard';
-
-    // Get the page title from the routes map
-    const pageTitle = routes[path] || '404 Not Found';
-
     // Render the view
-    renderView(pageTitle);
+    renderView(path);
 
     // Update Navigation UI
     updateNavigation(path);
@@ -138,7 +159,6 @@ function router() {
 // Mobile Menu Logic
 function toggleMobileMenu() {
     menuOverlay.classList.toggle('open');
-    // Optional: Animate hamburger icon
 }
 
 function closeMobileMenu() {
