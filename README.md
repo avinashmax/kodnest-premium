@@ -57,3 +57,31 @@ All architecture decisions, implementation, and customization were done independ
 ---
 
 ## 📁 Project Structure
+kodnest-premium/
+│
+├── index.html # Main entry page
+├── css/ # Styling files
+├── js/ # JavaScript logic
+└── docs/ # Project documentation
+
+## 📸 Screenshots
+Example:
+
+<img width="1895" height="969" alt="image" src="https://github.com/user-attachments/assets/b88b4242-0bef-4e71-9a23-a1679d904cd7" />
+
+<img width="1847" height="925" alt="image" src="https://github.com/user-attachments/assets/c43956d6-7cd1-45c1-8252-2ade5528dd33" />
+
+
+---
+
+## 🚀 How to Run Locally
+
+1. Clone the repository:
+git clone https://github.com/avinashmax/kodnest-premium.git
+
+2. Run local server:
+python -m http.server 8000
+
+3.Open in browser:
+http://localhost:8000
+
